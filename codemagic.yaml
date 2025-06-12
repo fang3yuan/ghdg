@@ -1,0 +1,18 @@
+workflows:
+  build-android:
+    name: Build Android APK
+    max_build_duration: 60
+    environment:
+      flutter: stable
+      xcode: latest
+      vars:
+        REPLIT_API_URL: "https://beb97cf8-5095-450d-880c-57dd6cec2acd-00-17qhujgbbpxfh.pike.replit.dev/"
+    scripts:
+      - name: Get dependencies
+        script: |
+          flutter pub get
+      - name: Build APK
+        script: |
+          flutter build apk --release
+    artifacts:
+      - build/app/outputs/flutter-apk/app-release.apk
